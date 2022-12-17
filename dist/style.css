@@ -2,3 +2,43 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 3rem;
+}
+
+h2 {
+    margin: .0rem;
+    padding: .4rem;
+}
+
+.book-list {
+    background-color: #eee;
+    padding-left: 4rem;
+}
+
+.book-list ::marker {
+    font: bold 24px Verdana;
+}
+
+.active,
+.book-list li h2:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.bookinfo {
+    background-color: #ddd;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .6s;
+} 
+
+.bookinfo li {
+    list-style-type: none;
+    font-size: 1.1rem;
+    padding: .3rem;
+}
+
+.transition {
+    transition: max-height .6s;
+}
