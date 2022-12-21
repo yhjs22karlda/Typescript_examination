@@ -1,7 +1,7 @@
 import {getData} from './fetch.js';
 import {Book} from './interfaces.js';
 
-const ol = document.querySelector(".book-list");
+const ol = document.querySelector("#book-list");
 
 const books: Book[] = await getData();
 
@@ -12,7 +12,7 @@ for(let book of books) {
     ul.setAttribute("class", "bookinfo")
     ul.setAttribute("style", "max-height:0px")
     h2.innerText = book.title;
-    h2.setAttribute("data-index", book.id.toString());
+    h2.setAttribute("id", `booktitle_${book.id.toString()}`);
     h2.addEventListener("click", transition);
     ol?.append(li)
     li.append(h2);
@@ -50,17 +50,24 @@ function searchForBook() {
     const searchString = searchField.value.toLowerCase().replace(/[^\w\s]/gi, "").trim();
     const searchResult = books.find((book) => book.title.toLowerCase().replace(/[^\w\s]/gi, "").trim() === searchString); 
     if(searchResult) {
-        const searchedElement = <HTMLElement>document.querySelector(`.book-list h2[data-index="${searchResult.id}"]`);
-        searchedElement?.click();
+        const searchedElement = <HTMLElement>document.querySelector(`#booktitle_${searchResult.id}`);
+        console.log(searchedElement);
+        if(!searchedElement.classList.contains("active")) searchedElement.click();
+        window.location.href = `#${searchedElement.id}`;
         searchField.value = "";
+    } else {
+        let noMatch = <HTMLElement>document.querySelector("#search-fail");
+        noMatch.innerHTML = "<strong>NO MATCH!</strong>";
+        setTimeout(() => {
+            noMatch.innerHTML = "";
+        }, 2000)
     }
-
 }
 
 function transition(e: Event) {
-    const eventTarget = e.target as HTMLElement;
+    const eventTarget = <HTMLElement>e.target;
     eventTarget.classList.toggle("active")
-    const ul = eventTarget.nextSibling as HTMLElement;
+    const ul = <HTMLElement>eventTarget.nextSibling;
     if(ul.style.maxHeight !== "0px") {
         ul.style.maxHeight = "0px";
     } else {
