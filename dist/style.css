@@ -4,11 +4,12 @@
 
 body {
     margin: 3rem;
+    font: 16px/24px Tahoma, sans-serif;
 }
 
-h2 {
-    margin: .0rem;
-    padding: .4rem;
+h1 {
+    /* margin: .0rem; */
+    /* padding: .4rem; */
 }
 
 .book-list {
@@ -16,8 +17,10 @@ h2 {
     padding-left: 4rem;
 }
 
-.book-list ::marker {
-    font: bold 24px Verdana;
+h2, .book-list ::marker {
+    font: bold 24px Verdana, sans-serif;
+    margin: 0;
+    padding: .4rem;
 }
 
 .active,

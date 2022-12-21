@@ -2,6 +2,5 @@ const url = "https://my-json-server.typicode.com/zocom-christoffer-wallenberg/bo
 export async function getData() {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
 }
