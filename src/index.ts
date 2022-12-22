@@ -38,8 +38,7 @@ const searchField = <HTMLInputElement>document.querySelector("#search");
 const searchButton = <HTMLButtonElement>document.querySelector("#search-button");
 
 searchField.addEventListener("keydown", (e) => {
-    const pressedKey = (e as KeyboardEvent).key;
-    if(pressedKey === "Enter") {
+    if(e.key === "Enter") {
         searchForBook();
     }
 })
@@ -51,7 +50,6 @@ function searchForBook() {
     const searchResult = books.find((book) => book.title.toLowerCase().replace(/[^\w\s]/gi, "").trim() === searchString); 
     if(searchResult) {
         const searchedElement = <HTMLElement>document.querySelector(`#booktitle_${searchResult.id}`);
-        console.log(searchedElement);
         if(!searchedElement.classList.contains("active")) searchedElement.click();
         window.location.href = `#${searchedElement.id}`;
         searchField.value = "";
@@ -60,11 +58,11 @@ function searchForBook() {
         noMatch.innerHTML = "<strong>NO MATCH!</strong>";
         setTimeout(() => {
             noMatch.innerHTML = "";
-        }, 2000)
+        }, 2200)
     }
 }
 
-function transition(e: Event) {
+function transition(e:Event) {
     const eventTarget = <HTMLElement>e.target;
     eventTarget.classList.toggle("active")
     const ul = <HTMLElement>eventTarget.nextSibling;
