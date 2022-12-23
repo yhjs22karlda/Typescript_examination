@@ -13,7 +13,7 @@ for (let book of books) {
     ol?.append(li);
     li.append(h2);
     li.append(ul);
-    const infoArray = [
+    const bookInfoArray = [
         ["Title", book.title],
         ["Author", book.author],
         ["Year", book.year],
@@ -21,10 +21,10 @@ for (let book of books) {
         ["Pages", book.pages],
         ["Plot", book.plot],
     ];
-    for (let i = 0; i < infoArray.length; i++) {
-        const innerInfo = document.createElement("li");
-        innerInfo.innerHTML = `<strong>${infoArray[i][0]}</strong>: ${infoArray[i][1] ?? "N/A"}`;
-        ul.append(innerInfo);
+    for (let i = 0; i < bookInfoArray.length; i++) {
+        const innerLi = document.createElement("li");
+        innerLi.innerHTML = `<strong>${bookInfoArray[i][0]}</strong>: ${bookInfoArray[i][1] ?? "N/A"}`;
+        ul.append(innerLi);
     }
 }
 const searchField = document.querySelector("#search");

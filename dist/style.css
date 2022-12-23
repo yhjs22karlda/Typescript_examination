@@ -25,7 +25,6 @@ h2, #book-list ::marker {
 
 .bookinfo {
     background-color: #ddd;
-    max-height: 0;
     overflow: hidden;
     transition: max-height .6s;
 } 
@@ -49,7 +48,6 @@ h2, #book-list ::marker {
 }
 
 #search-fail {
-    display: inline-block;
     margin-left: 1rem;
     color: red;
 }
